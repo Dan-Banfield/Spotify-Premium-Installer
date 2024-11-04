@@ -1,10 +1,10 @@
 ﻿namespace Spotify_Premium_Installer
 {
-    internal class Program
+    internal partial class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            PrepareConsole();
         }
     }
 }
