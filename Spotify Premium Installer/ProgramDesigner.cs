@@ -6,6 +6,7 @@
         {
             SetTitle("Spotify Premium Installer");
             SetColours(ConsoleColor.White, Console.BackgroundColor);
+            DisplayBubbleText();
         }
 
         internal static void SetTitle(string title) => Console.Title = title;
@@ -14,6 +15,22 @@
         {
             Console.ForegroundColor = foregroundColour;
             Console.BackgroundColor = backgroundColor;
+        }
+
+        internal static void DisplayBubbleText()
+        {
+            SetColours(ConsoleColor.Green, Console.BackgroundColor);
+            Console.WriteLine(@"
+ __          __  _                          _ 
+ \ \        / / | |                        | |
+  \ \  /\  / /__| | ___ ___  _ __ ___   ___| |
+   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ |
+    \  /\  /  __/ | (_| (_) | | | | | |  __/_|
+     \/  \/ \___|_|\___\___/|_| |_| |_|\___(_)
+                                              
+                                              
+");
+            SetColours(ConsoleColor.White, Console.BackgroundColor);
         }
     }
 }
