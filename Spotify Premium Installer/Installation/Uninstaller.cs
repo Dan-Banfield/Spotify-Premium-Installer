@@ -1,15 +1,38 @@
-﻿namespace Spotify_Premium_Installer.Installation
+﻿using System.Diagnostics;
+
+namespace Spotify_Premium_Installer.Installation
 {
     internal static class Uninstaller
     {
-        internal static void UninstallSpotify()
+        internal static async Task UninstallSpotifyAsync()
         {
-            
+            using (Process process = new Process { StartInfo = GetProcessStartInfo(GetUninstallSpotifyScriptLocation()) })
+            {
+                process.Start();
+                await process.WaitForExitAsync();
+            }
         }
 
-        internal static void UninstallSpotifyPatches()
+        internal static async Task UninstallSpotifyPatchesAsync()
         {
+            using (Process process = new Process { StartInfo = GetProcessStartInfo(GetUninstallSpotifyPatchesScriptLocation()) })
+            {
+                process.Start();
+                await process.WaitForExitAsync();
+            }
+        }
 
+        private static ProcessStartInfo GetProcessStartInfo(string fileName)
+        {
+            return new ProcessStartInfo
+            {
+                FileName = fileName,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden
+            };
         }
 
         private static string GetUninstallSpotifyScriptLocation()
