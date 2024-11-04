@@ -4,22 +4,25 @@ namespace Spotify_Premium_Installer
 {
     internal partial class Program
     {
-        static void Main()
+        static async Task Main()
         {
             PrepareConsole();
-            BeginProcess();
+            await BeginProcess();
 
             Console.ReadKey();
         }
 
-        internal static void BeginProcess()
+        internal static async Task BeginProcess()
         {
             switch (CurrentInstallation())
             {
                 case true:
-                    Uninstaller.UninstallSpotify();
+                    Console.WriteLine("\nUninstalling... Please wait.\n");
+                    await Uninstaller.UninstallSpotifyPatchesAsync();
+                    await Uninstaller.UninstallSpotifyAsync();
                     break;
             }
+            Console.WriteLine("\nInstalling... Please wait.\n");
             Installer.InstallSpotifyPremium();
         }
 
