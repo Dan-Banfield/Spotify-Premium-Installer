@@ -4,7 +4,32 @@
     {
         internal static void UninstallSpotify()
         {
-            //TODO: Uninstall Spotify.
+            
+        }
+
+        internal static void UninstallSpotifyPatches()
+        {
+
+        }
+
+        private static string GetUninstallSpotifyScriptLocation()
+        {
+            return Path.Combine
+            (
+                 AppContext.BaseDirectory,
+                 "res",
+                 "uninstallspotify.bat"
+            );
+        }
+
+        private static string GetUninstallSpotifyPatchesScriptLocation()
+        {
+            return Path.Combine
+            (
+                 AppContext.BaseDirectory,
+                 "res",
+                 "uninstallpatch.bat"
+            );
         }
     }
 }
